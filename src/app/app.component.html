@@ -1,32 +1,29 @@
 <!-- Toolbar -->
 <div class="toolbar" role="banner">
   <div class="toolbar-content">
-    <div class="logo" routerLink="/market" style="cursor: pointer;"><span>Visual Algorithm Sorter</span></div>
+    <div class="logo"><span>Visual Algorithm Sorter</span></div>
     <div class="buttons" style="float: left">
-      <button mat-button>
+      <button mat-stroked-button>
         New Array
       </button>
-          <mat-slider class="example-margin" [disabled]="disabled" [invert]="invert" [max]="max" [min]="min" [step]="step"
-            [thumbLabel]="true" [(ngModel)]="value">
-          </mat-slider>
-      <button mat-button>
-        Quick Sort
-      </button>
-      <button mat-button>
-        Merge Sort
-      </button>
-      <button mat-button>
-        Heap Sort
-      </button>
-      <button mat-button>
-        Bubble Sort
+      <mat-slider class="example-margin" [disabled]="disabled" [invert]="invert" [max]="max" [min]="min" [step]="step"
+        [thumbLabel]="true" [(ngModel)]="value">
+      </mat-slider>
+      <mat-radio-group>
+        <mat-radio-button value="quick">Quick Sort</mat-radio-button>
+        <mat-radio-button value="merge">Merge Sort</mat-radio-button>
+        <mat-radio-button value="heap">Heap Sort</mat-radio-button>
+        <mat-radio-button value="bubble">Bubble Sort</mat-radio-button>
+      </mat-radio-group>
+      <button mat-stroked-button>
+        Sort
       </button>
     </div>
   </div>
 </div>
 <div class="space"></div>
 
-<div class="content" style="min-height: 1000px;">
+<div class="content">
   <!-- <main [@fadeAnimation]="outlet.isActivated ? outlet.activatedRoute : ''"> -->
   <router-outlet></router-outlet>
   <!-- </main> -->
