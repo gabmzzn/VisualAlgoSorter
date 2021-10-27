@@ -8,6 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { MatButtonModule } from '@angular/material/button'
 import { MatSliderModule } from '@angular/material/slider'
 import { FormsModule } from '@angular/forms'
+import { MatRadioModule } from '@angular/material/radio';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { FormsModule } from '@angular/forms'
     AppRoutingModule,
     MatButtonModule,
     FormsModule,
+    MatRadioModule,
     MatSliderModule,
     BrowserAnimationsModule
   ],
