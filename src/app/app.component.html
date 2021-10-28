@@ -9,10 +9,10 @@
       <mat-slider [min]="4" [max]="125"[thumbLabel]="true" [(ngModel)]="sliderValue" (input)="onInputChange($event)">
       </mat-slider>
       <mat-radio-group [(ngModel)]="selectedAlgo">
-        <mat-radio-button value="mergeSort">Merge Sort</mat-radio-button>
-        <mat-radio-button value="quickSort">Quick Sort</mat-radio-button>
-        <mat-radio-button value="heapSort">Heap Sort</mat-radio-button>
-        <mat-radio-button value="bubbleSort">Bubble Sort</mat-radio-button>
+        <mat-radio-button value="mergeSort" (click)="generateArray(sliderValue)">Merge Sort</mat-radio-button>
+        <mat-radio-button value="quickSort" (click)="generateArray(sliderValue)">Quick Sort</mat-radio-button>
+        <mat-radio-button value="heapSort" (click)="generateArray(sliderValue)">Heap Sort</mat-radio-button>
+        <mat-radio-button value="bubbleSort" (click)="generateArray(sliderValue)">Bubble Sort</mat-radio-button>
       </mat-radio-group>
       <button mat-stroked-button (click)="sort(selectedAlgo)">Sort</button>
     </div>
