@@ -1,108 +1,28 @@
 <!-- Toolbar -->
 <div class="toolbar" role="banner">
   <div class="toolbar-content">
-    <div class="logo"><span>Visual Algorithm Sorter</span></div>
-    <div class="buttons" style="float: left">
-      <button mat-stroked-button>
+    <div class="logo"><span>Visual Sorter Algorithm</span></div>
+    <div>
+      <button mat-stroked-button (click)="generateArray(sliderValue)">
         New Array
       </button>
-      <mat-slider class="example-margin" [disabled]="disabled" [invert]="invert" [max]="max" [min]="min" [step]="step"
-        [thumbLabel]="true" [(ngModel)]="value">
+      <mat-slider [min]="4" [max]="125"[thumbLabel]="true" [(ngModel)]="sliderValue" (input)="onInputChange($event)">
       </mat-slider>
-      <mat-radio-group>
-        <mat-radio-button value="quick">Quick Sort</mat-radio-button>
-        <mat-radio-button value="merge">Merge Sort</mat-radio-button>
-        <mat-radio-button value="heap">Heap Sort</mat-radio-button>
-        <mat-radio-button value="bubble">Bubble Sort</mat-radio-button>
+      <mat-radio-group [(ngModel)]="selectedAlgo">
+        <mat-radio-button value="mergeSort">Merge Sort</mat-radio-button>
+        <mat-radio-button value="quickSort">Quick Sort</mat-radio-button>
+        <mat-radio-button value="heapSort">Heap Sort</mat-radio-button>
+        <mat-radio-button value="bubbleSort">Bubble Sort</mat-radio-button>
       </mat-radio-group>
-      <button mat-stroked-button>
-        Sort
-      </button>
+      <button mat-stroked-button (click)="sort(selectedAlgo)">Sort</button>
     </div>
   </div>
 </div>
-<div class="space"></div>
 
 <div class="content">
-  <!-- <main [@fadeAnimation]="outlet.isActivated ? outlet.activatedRoute : ''"> -->
-  <router-outlet></router-outlet>
-  <!-- </main> -->
-</div>
-<!-- <footer>
-  <div class="footer-content">
-    <div class="about">
-      <div class="firm-container">
-        <div class="firm">
-          <p id="juan">Juan</p>
-          <p id="gab">Gabriel</p>
-          <p id="mazz">Mazzoleni</p>
-          <p id="soft">Software Developer</p>
-        </div>
-      </div>
-    </div>
-    <div class="description">
-      <h1 style="font-size: 28px; font-style: italic; font-weight: 700;">investraining</h1>
-      <div>
-        This is a web app made to learn and show usage of different technologies. Consist basically on a crypto currency
-        portal,
-        where it shows from different currencies: live market data, general information, news feed, and statistical
-        market
-        data of
-        specific currencies.<br>
-        Almost all of the data shown on the site is loaded from an API while the live data is being fed from a
-        WebSocket.
-      </div>
-      <div class="contact" style="display: flex;flex-direction: row;">
-        <div class="contact-link">
-          <a href="https://github.com/gabmzzn/investraining" target="_blank"><img src=".\.\assets\imgs\github.png"></a>
-        </div>
-        <div class="contact-link">
-          <a href="https://www.linkedin.com/in/juan-gabriel-mazzoleni-a6b506142/" target="_blank"><img
-              src=".\.\assets\imgs\linkedin.png"></a>
-        </div>
-        <div class="contact-link">
-          <a href="https://www.linkedin.com/in/juan-gabriel-mazzoleni-a6b506142/" target="_blank"><img
-              src=".\.\assets\imgs\cv.png" href=""></a>
-        </div>
-        <div class="contact-link">
-          <a href="mailto: gabmzzn@gmail.com" title="gabmzzn@gmail.com" target="_blank"><img
-              src=".\.\assets\imgs\mail.png"></a>
-        </div>
-      </div>
-    </div>
-    <div class="resources">
-      <div>
-        <h2>Made with</h2>
-      </div>
-      <mat-chip-list>
-        <mat-chip>
-          Angular
-        </mat-chip>
-        <mat-chip>
-          TypeScript
-        </mat-chip>
-        <mat-chip>
-          CryptoCompare API
-        </mat-chip>
-        <mat-chip>
-          WebSocket
-        </mat-chip>
-        <mat-chip>
-          Apache ECharts
-        </mat-chip>
-        <mat-chip>
-          Angular Material
-        </mat-chip>
-        <mat-chip>
-          HTML5
-        </mat-chip>
-        <mat-chip>
-          CSS3
-        </mat-chip>
-        <mat-chip>
-          GitHub
-        </mat-chip>
-      </mat-chip-list>
+  <div class="graph">
+    <div *ngFor="let item of array | async; let i = index " class="bar" [ngStyle]="length(item.value, item.color)">
+      <p>.</p>
     </div>
   </div>
-</footer> -->
+</div>
